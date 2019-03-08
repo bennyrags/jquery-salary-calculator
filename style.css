@@ -1,0 +1,36 @@
+body,h1,h2,h3,header {
+    margin:0;
+}
+
+h1,h2,h3,p,td,th,button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+
+    width:90vw;
+    margin:20px auto;
+}
+
+h1, h2, h3, table {
+    margin: 20px 0;
+}
+
+
+header {
+    height:80px;
+    background-color:lightgreen;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+td, 
+th {
+    border: 1px solid lightgreen;
+    
+}
+
+td, th, button, input {
+padding:10px 20px;
+}

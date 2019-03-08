@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="client.js"></script>
+    </head>
+    </head>
+    <body>
+<header>
+    <h1>Salary Calculator</h1>
+</header>
+<main>
+    <h2>Add Employee</h2>
+    <form>
+<input id="firstNameIn" type="text">
+<input id="lastNameIn" type="text">
+<input id="idIn" type="number">
+<input id="titleIn" type="text">
+<input id="salaryIn" type="number">
+<button>Submit</button>
+    </form>
+    <section>
+        <h3>Employees</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>ID</td>
+                    <td>Title</td>
+                    <td>Annual Salary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="firstNameOut"></td>
+                    <td id="lastNameOut"></td>
+                    <td id="idOut"></td>
+                    <td id="titleOut"></td>
+                    <td id="annualSalaryOut"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h4>Total Monthly: <span id="totalMonthyOut"></span></h4>
+    </section>
+</main>
+    </body>
+</html>
