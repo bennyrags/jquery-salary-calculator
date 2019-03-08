@@ -30,35 +30,51 @@ console.log('employee info arr', employeeInfo);
     addEmployeeInfo();
 }
 
+//adds employee info to table
+//create tds for each input
+//append to employeeInfoOutput
+
 function addEmployeeInfo(){
     let el = $("#employeeInfoOutput");
     el.empty();
-    for (employee of employeeInfo) {
+    for (let employee of employeeInfo) {
         el.append(
           `<tr id="${employee.lastName}">
-          <td>${employee.firstName}</td>
-            <td>${employee.lastName}</td>
+           <td>${employee.firstName}</td>
+           <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
             <td>${employee.annualSalary}</td>
             </tr>`
         );
-    }
-}
+    //stuck - if i do the calculations in a separate function, how do i transfer the salary info into another function
+    
+    //do i call the funct w/in the loop? or do i acutally do the calc here?
 
-//adds employee info to table
-//create tds for each input
-//append to employeeInfoOutput
+    //and then put it in a var and return the var
+    }
+calculateMonthly();
+}
 
 
 //calc monthly cost
 //totalMonthyOut
+function calculateMonthly() {
+let monthly = 0;
+for (let i=0; i<employeeInfo.length; i++) {
+ monthly = Number(employeeInfo[i].annualSalary) / 12;   
+}
 
-// return salary / 12 ?
-
+console.log('this is monthly,', monthly)
 
 //add salary to counter 
+
 //counter += calc monthly cost
+monthly += monthly;
+
+$('#totalMonthlyOut').text(monthly);  
+}
+
 
 
 // Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
