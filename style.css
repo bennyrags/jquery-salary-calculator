@@ -41,6 +41,7 @@ th {
 button:hover {
     background-color:lightgreen;
     color: white;
+    cursor: pointer;
 }
 
 td, th, button, input {
@@ -50,4 +51,18 @@ padding:10px 20px;
 .inTheRed {
     background-color:red;
     padding: 2px 5px;
+}
+
+/*This is to hide the table header for the remove button*/
+
+/*These two styles are to make the remove button appear as if is hovering outside of the table. 
+It's a stylistic preference.*/
+
+tr > th:nth-of-type(6) {
+    display:none;
+}
+
+
+tr > td:nth-of-type(6) {
+    border:none;
 }

@@ -21,8 +21,8 @@ let employeeObj = {
   firstName: $("#firstNameIn").val(),
   lastName: $("#lastNameIn").val(),
   id: $("#idIn").val(),
-    title: $("#titleIn").val(),
-    annualSalary: $("#salaryIn").val()
+  title: $("#titleIn").val(),
+  annualSalary: $("#salaryIn").val()
 };
 employeeInfo.push(employeeObj);
 console.log('employee info arr', employeeInfo);
@@ -39,12 +39,14 @@ function addEmployeeInfo(){
     el.empty();
     for (let employee of employeeInfo) {
         el.append(
+            //tr uses id of last name--match that with class or remove button to remove it when clicked
           `<tr id="${employee.lastName}">
            <td>${employee.firstName}</td>
            <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
             <td>${employee.annualSalary}</td>
+            <td><button class="${employee.lastName}">Remove</button></td>
             </tr>`
         );
     //stuck - if i do the calculations in a separate function, how do i transfer the salary info into another function
@@ -79,3 +81,7 @@ let monthlyFixed = monthly.toLocaleString();
 
 
 // Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
+
+// function removeEmployee() {
+
+// }
