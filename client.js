@@ -67,8 +67,8 @@ if (monthly > 20000) {
     $('#totalMonthlyOut').addClass('inTheRed');
 }
 }
-
-$('#totalMonthlyOut').text(monthly);  
+let monthlyFixed = monthly.toFixed(2);
+    $('#totalMonthlyOut').text('$' + monthlyFixed.toLocaleString());  
 
 }
 
