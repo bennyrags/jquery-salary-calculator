@@ -62,17 +62,14 @@ calculateMonthly();
 function calculateMonthly() {
 let monthly = 0;
 for (let i=0; i<employeeInfo.length; i++) {
- monthly = Number(employeeInfo[i].annualSalary) / 12;   
+ monthly += Number(employeeInfo[i].annualSalary) / 12;   
+if (monthly > 20000) {
+    $('#totalMonthlyOut').addClass('inTheRed');
+}
 }
 
-console.log('this is monthly,', monthly)
-
-//add salary to counter 
-
-//counter += calc monthly cost
-monthly += monthly;
-
 $('#totalMonthlyOut').text(monthly);  
+
 }
 
 

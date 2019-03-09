@@ -46,3 +46,7 @@ button:hover {
 td, th, button, input {
 padding:10px 20px;
 }
+
+.inTheRed {
+    background-color:red;
+}
