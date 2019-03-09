@@ -63,13 +63,17 @@ function calculateMonthly() {
 let monthly = 0;
 for (let i=0; i<employeeInfo.length; i++) {
  monthly += Number(employeeInfo[i].annualSalary) / 12;   
-if (monthly > 20000) {
+
+
+
+ if (monthly > 20000) {
     $('#totalMonthlyOut').addClass('inTheRed');
 }
-}
-let monthlyFixed = monthly.toFixed(2);
-    $('#totalMonthlyOut').text('$' + monthlyFixed.toLocaleString());  
 
+
+}
+let monthlyFixed = monthly.toLocaleString();
+    $('#totalMonthlyOut').text('$' + monthlyFixed);  
 }
 
 
