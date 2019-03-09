@@ -9,7 +9,7 @@ console.log('This is in the readyNow func');
 console.log('employee info var', employeeInfo);
 //function to push val info into array
 $('#submitButton').on('click', takeEmployeeInfo);
-
+$('body').on('click', '.removeEmployee', removeEmployee);
 }
 
 //takes employee info in
@@ -39,14 +39,16 @@ function addEmployeeInfo(){
     el.empty();
     for (let employee of employeeInfo) {
         el.append(
-            //tr uses id of last name--match that with class or remove button to remove it when clicked
-          `<tr id="${employee.lastName}">
+          //tr uses id of last name--match that with class or remove button to remove it when clicked
+          `<tr id="${employee.lastName}_${employee.id}">
            <td>${employee.firstName}</td>
            <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
             <td>${employee.annualSalary}</td>
-            <td><button class="${employee.lastName}">Remove</button></td>
+            <td><button class="removeEmployee ${employee.lastName}_${
+            employee.id
+          }">Remove</button></td>
             </tr>`
         );
     //stuck - if i do the calculations in a separate function, how do i transfer the salary info into another function
@@ -79,9 +81,18 @@ let monthlyFixed = monthly.toLocaleString();
 }
 
 
-
 // Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
 
-// function removeEmployee() {
+function removeEmployee() {
+console.log('Handshake between remove button on click and removeEmployee function');
 
-// }
+    $('.removeEmployee').closest('tr').remove();
+
+//I need to do three things here
+//One, remove the tr parent of this button when clicked
+
+//two, remove this entry from array
+
+//three, subtract the mothly amount from monthly amount
+
+}
