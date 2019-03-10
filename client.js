@@ -26,8 +26,8 @@ let employeeObj = {
 employeeInfo.push(employeeObj);
 console.log('employee info arr', employeeInfo);
 //func to add info to tbl
-    addEmployeeInfo();
-    //clear input fields
+addEmployeeInfo();
+//clear input fields
 //clear input fields
     $('input').val('');   
 }
@@ -41,38 +41,31 @@ function addEmployeeInfo(){
     el.empty();
     for (let employee of employeeInfo) {
         el.append(
-          //tr uses id of last name--match that with class or remove button to remove it when clicked
-          `<tr id="${employee.lastName}_${employee.id}">
+          `<tr>
            <td>${employee.firstName}</td>
            <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary}</td>
+            <td>$${employee.annualSalary}</td>
             <td><button class="removeEmployee" data-id="${employee.id}">Remove</button></td>
             </tr>`
         );
-    //stuck - if i do the calculations in a separate function, how do i transfer the salary info into another function
-    
-    //do i call the funct w/in the loop? or do i acutally do the calc here?
-
-    //and then put it in a var and return the var
+    //I was stuck here at first. I didn't know how to transfer the salary to another function. 
+    //Eventually, I realized that I could call another function here which would loop over the entire array, negating the need to transfer just this salary
     }
 calculateMonthly();
 }
 
-
 //calc monthly cost
-//totalMonthyOut
 function calculateMonthly() {
 let monthly = 0;
 for (let i=0; i<employeeInfo.length; i++) {
  monthly += Number(employeeInfo[i].annualSalary) / 12;   
 
-
-
  if (monthly > 20000) {
     $('#totalMonthlyOut').addClass('inTheRed');
 }
+//I added this else field when I started employing this funct in the remove employee funct - it wasn't removing the class when it went under 20k
 
 else {
      $('#totalMonthlyOut').removeClass('inTheRed');
@@ -80,35 +73,33 @@ else {
 
 
 }
-    let monthlyFixed = monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+//Realized I had to format this to add two cents digits 
+let monthlyFixed = monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     $('#totalMonthlyOut').text('$' + monthlyFixed);  
 }
 
 
-// Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
-
+//Remove employee function
 function removeEmployee() {
-  console.log("The following is this");
-  console.log($(this));
+//Checked what $(this) is in this context to see if I could use it
+//   console.log("The following is this");
+//   console.log($(this));
 
-  console.log(
-    "Handshake between remove button on click and removeEmployee function"
-  );
+//This handshake idea comes from Dev's lecture
+//   console.log(
+//     "Handshake between remove button on click and removeEmployee function"
+//   );
 
   //I need to do three things here
   //One, remove the tr parent of this button when clicked
 
   //this works for one entry but not for multple entries
   //for multiple entries
-//   $('.removeButton')
-//     .closest("tr")
-//     .remove();
+//   $('.removeButton').closest("tr").remove();
   //The above didn't work b/c it was removing all parents of each 
-  $(this)
-    .closest("tr")
-    .remove();
-  //removes all entries if more than one
+  $(this).closest("tr").remove();
+  //this works b/c $(this) is the specific button and not all buttons 
 
   //two, remove this entry from array
   //need to use find index of that employee and splice
@@ -120,13 +111,12 @@ function removeEmployee() {
   //if
 
   for (i=0; i<employeeInfo.length;i++) {
+      //if the employee info id equals the data id attr of the button,
+      //which is added in addEmployeeInfo(), use the index to splice that obj in the array
         if (employeeInfo[i].id === $(this).attr('data-id') ) {
             employeeInfo.splice(i,1);
         }
-  //three, rerun the cost function without removed salary
-        calculateMonthly();
-        
+  //three, rerun the cost calculation function after removing salary
+        calculateMonthly();   
     }
-
-
 }
