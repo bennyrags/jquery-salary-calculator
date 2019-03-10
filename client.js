@@ -74,6 +74,10 @@ for (let i=0; i<employeeInfo.length; i++) {
     $('#totalMonthlyOut').addClass('inTheRed');
 }
 
+else {
+     $('#totalMonthlyOut').removeClass('inTheRed');
+}
+
 
 }
     let monthlyFixed = monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -119,12 +123,10 @@ function removeEmployee() {
         if (employeeInfo[i].id === $(this).attr('data-id') ) {
             employeeInfo.splice(i,1);
         }
-        // employeeInfo[i].salary 
+  //three, rerun the cost function without removed salary
+        calculateMonthly();
+        
     }
 
-
-
-
-  //three, subtract the mothly amount from monthly amount
 
 }
