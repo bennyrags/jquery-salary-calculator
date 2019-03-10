@@ -28,6 +28,7 @@ employeeInfo.push(employeeObj);
 console.log('employee info arr', employeeInfo);
 //func to add info to tbl
     addEmployeeInfo();
+    $('input').val('');   
 }
 
 //adds employee info to table
@@ -46,9 +47,7 @@ function addEmployeeInfo(){
             <td>${employee.id}</td>
             <td>${employee.title}</td>
             <td>${employee.annualSalary}</td>
-            <td><button class="removeEmployee ${employee.lastName}_${
-            employee.id
-          }">Remove</button></td>
+            <td><button class="removeEmployee" data-id="${employee.id}">Remove</button></td>
             </tr>`
         );
     //stuck - if i do the calculations in a separate function, how do i transfer the salary info into another function
@@ -84,15 +83,47 @@ let monthlyFixed = monthly.toLocaleString();
 // Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
 
 function removeEmployee() {
-console.log('Handshake between remove button on click and removeEmployee function');
+  let removeIndex =0;
+  console.log("The following is this");
+  console.log($(this));
 
-    $('.removeEmployee').closest('tr').remove();
+  console.log(
+    "Handshake between remove button on click and removeEmployee function"
+  );
 
-//I need to do three things here
-//One, remove the tr parent of this button when clicked
+  //I need to do three things here
+  //One, remove the tr parent of this button when clicked
 
-//two, remove this entry from array
+  //this works for one entry but not for multple entries
+  //for multiple entries
+//   $('.removeButton')
+//     .closest("tr")
+//     .remove();
+  //The above didn't work b/c it was removing all parents of each 
+  $(this)
+    .closest("tr")
+    .remove();
+  //removes all entries if more than one
 
-//three, subtract the mothly amount from monthly amount
+  //two, remove this entry from array
+  //need to use find index of that employee and splice
+  //how do i do that
+  //for loop
+  //if  //need to use find index of that employee and splice
+  //how do i do that
+  //for loop
+  //if
+
+  for (i=0; i<employeeInfo.length;i++) {
+        if (employeeInfo[i].id === $(this).attr('data-id') ) {
+            employeeInfo.splice(i,1);
+        }
+        employeeInfo[i].salary 
+    }
+
+
+
+
+  //three, subtract the mothly amount from monthly amount
 
 }
