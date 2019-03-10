@@ -15,7 +15,6 @@ $('body').on('click', '.removeEmployee', removeEmployee);
 //takes employee info in
 function takeEmployeeInfo() {
 //onclick to enter everything
-//clear input fields
 //create obj w/inputs
 let employeeObj = {
   firstName: $("#firstNameIn").val(),
@@ -28,6 +27,8 @@ employeeInfo.push(employeeObj);
 console.log('employee info arr', employeeInfo);
 //func to add info to tbl
     addEmployeeInfo();
+    //clear input fields
+//clear input fields
     $('input').val('');   
 }
 
@@ -75,7 +76,8 @@ for (let i=0; i<employeeInfo.length; i++) {
 
 
 }
-let monthlyFixed = monthly.toLocaleString();
+    let monthlyFixed = monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
     $('#totalMonthlyOut').text('$' + monthlyFixed);  
 }
 
@@ -83,7 +85,6 @@ let monthlyFixed = monthly.toLocaleString();
 // Create a delete button that removes an employee from the DOM.For Base mode, it does not need to remove that Employee's salary from the reported total.
 
 function removeEmployee() {
-  let removeIndex =0;
   console.log("The following is this");
   console.log($(this));
 
@@ -118,7 +119,7 @@ function removeEmployee() {
         if (employeeInfo[i].id === $(this).attr('data-id') ) {
             employeeInfo.splice(i,1);
         }
-        employeeInfo[i].salary 
+        // employeeInfo[i].salary 
     }
 
 
