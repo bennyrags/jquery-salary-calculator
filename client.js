@@ -1,6 +1,4 @@
 
-//A 'Submit' button should collect the form information, store the information to calculate monthly costs, append information to the DOM and clear the input fields.Using the stored information, calculate monthly costs and append this to the to DOM.If the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
-
 
 $(document).ready(readyNow);
 let employeeInfo = [];
@@ -14,6 +12,21 @@ $('body').on('click', '.removeEmployee', removeEmployee);
 
 //takes employee info in
 function takeEmployeeInfo() {
+//loop and if else to make sure all input fields are filled in
+let filledIn = 0;
+let input = $('input');
+input.each(function(i){
+if ($(this).val().length > 0) {
+    filledIn += 1;
+    }
+}); 
+//console.log('This is filledIn', filledIn);
+    if (filledIn < input.length) {
+    alert('Please fill in all fields.')
+}
+
+else {
+
 //onclick to enter everything
 //create obj w/inputs
 let employeeObj = {
@@ -29,7 +42,8 @@ console.log('employee info arr', employeeInfo);
 addEmployeeInfo();
 //clear input fields
 //clear input fields
-    $('input').val('');   
+    input.val('');   
+} 
 }
 
 //adds employee info to table
@@ -110,7 +124,7 @@ function removeEmployee() {
   //for loop
   //if
 
-  for (i=0; i<employeeInfo.length;i++) {
+  for (let i=0; i<employeeInfo.length;i++) {
       //if the employee info id equals the data id attr of the button,
       //which is added in addEmployeeInfo(), use the index to splice that obj in the array
         if (employeeInfo[i].id === $(this).attr('data-id') ) {
